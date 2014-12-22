@@ -14,6 +14,7 @@ AT+CWSAP         Set Mod Access Point parameters    Wifi                        
 AT+CWLIF         Check join device IP               Wifi                        AT+CWLIF                -                            AT+CWLIF
 AT+CIPSTATUS     get conn status                    TCP/IP       <id>,<type>    AT+CIPSTATUS            -
                                                                  <addr>,<port>
+AT+CIUPDATE      Update firmware from the cloud     basic        OK             -                       -
 
 Will add rest Soon !
 ~                                                                              
