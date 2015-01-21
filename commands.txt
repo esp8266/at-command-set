@@ -5,15 +5,30 @@ Commands         Description                        Type         Reply          
 AT               generic cmd                        basic        OK             -                       -                            -
 AT+RST           Resets the mod                     basic        Module info    -                       -                            AT+RST
 AT+GMR           returns the current Fw version     basic        Fw Version     -                       -                            -
-AT+CWMODE        Wifi Mode Set                      Wifi         Mode SET       AT+CWMODE=<Mode>        Mode 1=Sta, 2=AP, 3=both     AT+CWMODE=2
+AT+CWMODE        Set wifi mode                      Wifi         Mode SET       AT+CWMODE=<mode>        mode: 1=Sta, 2=AP, 3=both    AT+CWMODE=2
 AT+CWLAP         Lists all available AP             Wifi         list of AP     AT+CWLAP                -                            AT+CWLAP
-AT+CWJAP         Joins an Access Point              Wifi         OK             AT+CWJAP=<ssid>,<pwd>   Your Wifi SSID and Password  AT+CWJAP=<test>,<123456789>
-AT+CWQAP         Quits the Access Point             Wifi                        AT+CWQAP                -                            AT+CWQAP
-AT+CWSAP         Set Mod Access Point parameters    Wifi                        AT+CWSAP=<ssid>,<pwd>,  desired SSID,Password,
-                                                                                <chl>,<ecn>             channel, encryption
-AT+CWLIF         Check join device IP               Wifi                        AT+CWLIF                -                            AT+CWLIF
-AT+CIPSTATUS     get conn status                    TCP/IP       <id>,<type>    AT+CIPSTATUS            -
+AT+CWJAP         Joins an Access Point              Wifi         OK             AT+CWJAP=<ssid>,<pwd>   ssid: SSID to connect to     AT+CWJAP="test","123456789"
+                                                                                                        pwd: password
+AT+CWQAP         Quits the Access Point             Wifi         OK             AT+CWQAP                -                            AT+CWQAP
+AT+CWSAP         Set Mod Access Point parameters    Wifi                        AT+CWSAP=<ssid>,<pwd>,  ssid: SSID to broadcast      -
+                                                                                <chl>,<ecn>             pwd: passwordchannel
+                                                                                                        chl: WLAN channel
+                                                                                                        ecn: encryption
+                                                                                                             0=none, 1=WEP,
+                                                                                                             2=WPA_PSK, 3=WPA2_PSK,
+                                                                                                             4=WPA_WPA2_PSK
+AT+CWLIF         Check join device IP               Wifi                        AT+CWLIF                -                            -
+AT+CIFSR         Get current IP address             TCP/IP       IP address     AT+CWFSR                -                            -
+AT+CIPSTATUS     Get connection status              TCP/IP       <id>,<type>    AT+CIPSTATUS            -
                                                                  <addr>,<port>
+AT+CIPMUX        Set multiple connection            TCP/IP       link is        AT+CIPMUX=<mode>        mode: 0=single,1=multiple    AT+CIPMUX=0
+                                                                 builded                                      connections
+AT+CIPSTART      Set up a TCP or UDP connection     TCP/IP       Linked         AT+CIPSTART=<type>,     type: TCP or UDP             AT+CIPSTART="TCP","192.168
+                                                                                <addr>,<port>           addr: IP address             .1.88",8888
+                                                                                                        port: port
+AT+CIPSEND       Send data                          TCP/IP       > <data>       AT+CIPSEND=<length>     length: length of <data>     AT+CIPSEND=11
+                                                                 SEND OK                                                             > hello world
+AT+CIPCLOSE      Close a TCP or UDP connection      TCP/IP       MUX=<mode>     AT+CIPCLOSE=<id>        id: connection id            AT+CIPCLOSE=0
 
 Will add rest Soon !
 ~                                                                              
